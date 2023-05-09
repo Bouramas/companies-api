@@ -1,0 +1,25 @@
+# Ignore build files and executables
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+
+# Ignore Go-specific files
+*.exe
+*.test
+*.prof
+*.out
+*.cover
+/_test/
+/bin/
+/pkg/
+/vendor/
+
+# Ignore IDE-specific files
+.idea/
+*.iml
+
+# Ignore database-specific files
+*.db
+*.sqlite
