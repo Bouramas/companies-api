@@ -1,41 +1,76 @@
-# Companies API
+# Companies API Showcase
 
-This is a sample REST API with basic CRUD operations available.
+Welcome to the Companies API, a demonstration of modern backend development using Golang.
 
-Implementation details:
-* GoLang 1.19
-* MySQL
-* Docker
+## Overview
 
-## Steps to run locally
+This project showcases a RESTful API with essential CRUD operations for managing company data. It integrates seamlessly with MySQL for data storage and is containerized with Docker for easy deployment.
 
-### DB
-Run `docker-compose up -d --build mysql`
+### Key Technologies
 
-### API
-1. Set the MYSQL_DSN env var used by the API to connect to the DB:
-   `export MYSQL_DSN="root:password@tcp(mysql:3306)/the_company_db?parseTime=true&sql_mode=NO_ZERO_DATE"`
-2. Modify `GOOS` and `GOARCH` based on your machine in the `Makefile`
-3. Run `make build`
-4. Run `./companies-api`
+- **Golang 1.22:** Leveraging the power and efficiency of Golang for robust backend development.
+- **MySQL:** A reliable relational database management system for persistent data storage.
+- **Docker:** Simplifies deployment and ensures consistent environments across different platforms.
 
-You can also use the Postman collection in the [docs](docs) folder
-.
+## Getting Started
 
+### Running Locally
 
+#### Using Docker Compose
+
+Start both MySQL and the API service with a single command:
+
+```bash
+docker-compose up -d --build mysql api
+```
+
+#### Running Separately
+
+Alternatively, build and run the API service and MySQL individually:
+
+```bash
+# Build the image
+docker build -t c-api-image .
+
+# Run the image with environment variables and network setup
+docker run --env-file .env --network companies-stack -p 8080:8080 c-api-image
+```
+
+### Setting Up the API
+
+1. **Configure MySQL Connection**
+
+   Set the `MYSQL_DSN` environment variable to connect the API with MySQL. Example:
+
+   ```bash
+   export MYSQL_DSN="root:password@tcp(mysql:3306)/the_company_db?parseTime=true&sql_mode=NO_ZERO_DATE"
+   ```
+
+2. **Adjust Build Configuration**
+
+   Modify `GOOS` and `GOARCH` in the `Makefile` according to your local machine architecture.
+
+3. **Build and Run**
+
+   Use the Makefile to build the API and execute the compiled executable:
+
+   ```bash
+   make build
+   ./companies-api
+   ```
+
+### Additional Resources
+
+Explore the API functionalities using the Postman collection available in the [docs](docs) folder.
+
+---
+
+This project not only demonstrates proficiency in backend development but also showcases best practices in API design, containerization, and deployment strategies. Feel free to explore and adapt this example to suit your own projects or development team needs.
 ### TODO - FIXME:
 
-// Run with Dockerfile and Docker-compose
 // Add API documentation
 // Add Unit Tests
 
-// Docker run
-// Not working:
 
-// Build the image
-docker build -t c-api-image .
-
-// Run the image
-docker run -p 8080:8080 c-api-image
 
 

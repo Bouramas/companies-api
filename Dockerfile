@@ -1,5 +1,6 @@
-# Use an official Golang runtime as a parent image
-FROM golang:1.19
+FROM golang:1.22-alpine as build
+
+RUN apk update && apk add --no-cache bash make
 
 # Use sh instead of bash
 SHELL ["/bin/sh", "-c"]

@@ -22,7 +22,7 @@ func NewCompanyService(db *sql.DB) *CompanyService {
 // Returns an error if the Company already exists or if there is an error creating it.
 func (cs *CompanyService) CreateCompany(c *resources.Company) error {
 
-	query := "INSERT INTO companies (id, name, description, employees, registered, type) VALUES (UNHEX(REPLACE(?, '-', '')), ?, ?, ?, ?, ?)"
+	query := "INSERT INTO Companies (id, name, description, employees, registered, type) VALUES (UNHEX(REPLACE(?, '-', '')), ?, ?, ?, ?, ?)"
 	uuidBytes := []byte(c.ID)
 	_, err := cs.DB.Exec(query, uuidBytes, c.Name, c.Description, c.Employees, c.Registered, c.Type)
 	if err != nil {
@@ -35,7 +35,7 @@ func (cs *CompanyService) CreateCompany(c *resources.Company) error {
 // PatchCompany updates an existing Company with the given changes.
 // Returns an error if the Company doesn't exist or if there is an error updating it.
 func (cs *CompanyService) PatchCompany(c *resources.Company) error {
-	query := "UPDATE companies SET name = ?, description = ?, employees = ?, registered = ?, type = ? WHERE id = UNHEX(REPLACE(?, '-', ''))"
+	query := "UPDATE Companies SET name = ?, description = ?, employees = ?, registered = ?, type = ? WHERE id = UNHEX(REPLACE(?, '-', ''))"
 	uuidBytes := []byte(c.ID)
 	_, err := cs.DB.Exec(query, c.Name, c.Description, c.Employees, c.Registered, c.Type, uuidBytes)
 	if err != nil {
@@ -48,7 +48,7 @@ func (cs *CompanyService) PatchCompany(c *resources.Company) error {
 // DeleteCompany deletes the Company with the given ID.
 // Returns an error if the Company doesn't exist or if there is an error deleting it.
 func (cs *CompanyService) DeleteCompany(id string) error {
-	query := "DELETE FROM companies WHERE id = UNHEX(REPLACE(?, '-', ''))"
+	query := "DELETE FROM Companies WHERE id = UNHEX(REPLACE(?, '-', ''))"
 	uuidBytes := []byte(id)
 	_, err := cs.DB.Exec(query, uuidBytes)
 	return err
@@ -80,7 +80,7 @@ func (cs *CompanyService) GetCompany(id string) (*resources.Company, bool, error
 // CompanyExists checks if the company exists
 // Returns whether or not the company exists and an error if there is an error.
 func (cs *CompanyService) CompanyExists(name string) (bool, error) {
-	query := "SELECT COUNT(*) FROM companies WHERE name = ?"
+	query := "SELECT COUNT(*) FROM Companies WHERE name = ?"
 	row := cs.DB.QueryRow(query, name)
 	var count int
 	if err := row.Scan(&count); err != nil {

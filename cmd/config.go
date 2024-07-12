@@ -25,6 +25,8 @@ func newConfig() (cfg *config, err error) {
 func getMySQL() (*sql.DB, error) {
 	dsn := os.Getenv("MYSQL_DSN")
 
+	println("HERE-> ", dsn)
+
 	db, err := sql.Open("mysql", dsn)
 	if err != nil {
 		return nil, fmt.Errorf("failed to connect to MySQL: %w", err)
