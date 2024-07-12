@@ -1,4 +1,4 @@
-# Companies API Showcase
+# Companies API
 
 Welcome to the Companies API, a demonstration of modern backend development using Golang.
 
@@ -10,13 +10,13 @@ This project showcases a RESTful API with essential CRUD operations for managing
 
 - **Golang 1.22:** Leveraging the power and efficiency of Golang for robust backend development.
 - **MySQL:** A reliable relational database management system for persistent data storage.
-- **Docker:** Simplifies deployment and ensures consistent environments across different platforms.
+- **🐳 Docker:** Simplifies deployment and ensures consistent environments across different platforms.
 
 ## Getting Started
 
 ### Running Locally
 
-#### Using Docker Compose
+#### Using Docker Compose 🐳
 
 Start both MySQL and the API service with a single command:
 
@@ -63,14 +63,14 @@ docker run --env-file .env --network companies-stack -p 8080:8080 c-api-image
 
 Explore the API functionalities using the Postman collection available in the [docs](docs) folder.
 
----
+### TODO:
 
-This project not only demonstrates proficiency in backend development but also showcases best practices in API design, containerization, and deployment strategies. Feel free to explore and adapt this example to suit your own projects or development team needs.
-### TODO - FIXME:
+- Add API documentation
+- Add Unit Tests
 
-// Add API documentation
-// Add Unit Tests
+## ☎️ Get in Touch
 
+I'm always open to discussions, collaborations, and feedback. If you have any questions or just want to connect, feel free to reach out!
 
-
-
+- **Email:** gbouramas@gmail.com
+- **LinkedIn:** [Giannis Bouramas](https://www.linkedin.com/in/bouramas)
